@@ -1,0 +1,77 @@
+.leave-page {
+  padding: 40px;
+  background: #f4f6f9;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.leave-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.apply-btn {
+  background: #6d28d9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background: #5b21b6;
+}
+
+.search-box {
+  width: 300px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.leave-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.leave-table th {
+  background: #eef1f5;
+  padding: 12px;
+  text-align: left;
+}
+
+.leave-table td {
+  padding: 12px;
+  border-top: 1px solid #eee;
+}
+
+.leave-table tr:hover {
+  background: #f9fafb;
+}
+
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.status.Pending {
+  background: orange;
+}
+
+.status.Approved {
+  background: green;
+}
+
+.status.Rejected {
+  background: red;
+}

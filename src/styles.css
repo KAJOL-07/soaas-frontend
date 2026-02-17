@@ -2,15 +2,22 @@ body {
   margin: 0;
   font-family: Arial;
   background: linear-gradient(to right, #4e73df, #1cc88a);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 .container {
-  background: rgba(255,255,255,0.1);
-  padding: 40px;
+  background: rgba(255,255,255,0.12);
+  padding: 30px;
   border-radius: 15px;
   width: 350px;
   text-align: center;
@@ -40,6 +47,7 @@ button {
 button:hover {
   background: #2e59d9;
 }
+
 .card {
   background: rgba(255,255,255,0.2);
   padding: 10px;
