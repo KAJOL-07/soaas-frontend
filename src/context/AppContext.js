@@ -1,5 +1,7 @@
 import React, { createContext, useState } from 'react';
 
+const BASE_URL = 'http://localhost:3001';
+
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
@@ -38,11 +40,38 @@ export const AppProvider = ({ children }) => {
 
   const logout = () => setUser(null);
 
-  const addLeaveRequest = (request) => {
-    const newReq = { ...request, id: Date.now(), status: 'Pending' };
+  const addLeaveRequest = async (request) => {
+    const payload = {
+      studentId: request.studentId || user?.regNo,
+      studentName: request.studentName || user?.name,
+      type: request.type,
+      fromDate: request.from,
+      toDate: request.to,
+      fromTime: request.fromTime,
+      toTime: request.toTime,
+      reason: request.reason,
+    };
+
+    const newReq = { ...payload, id: Date.now(), status: 'Pending' };
     setLeaveRequests([newReq, ...leaveRequests]);
-    // Notify staff
-    setNotifications([{ id: Date.now(), userId: 'STAFF01', message: `New leave request from ${user.name}`, read: false, time: new Date().toISOString() }, ...notifications]);
+    setNotifications([{ id: Date.now(), userId: 'STAFF01', message: `New leave request from ${user?.name}`, read: false, time: new Date().toISOString() }, ...notifications]);
+
+    try {
+      const response = await fetch(`${BASE_URL}/api/leave/apply`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Unable to save leave request to the server');
+      }
+
+      const result = await response.json();
+      setLeaveRequests((current) => [result.leave, ...current.filter(l => l.id !== newReq.id)]);
+    } catch (error) {
+      console.error('Leave API error:', error);
+    }
   };
 
   const updateLeaveStatus = (id, newStatus) => {
