@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:3001";
 
 export const applyLeave = async (data) => {
   const response = await fetch(`${BASE_URL}/api/leave/apply`, {

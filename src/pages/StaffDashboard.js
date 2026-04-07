@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
 
 export default function StaffDashboard() {
-  const { user, leaveRequests, projects, marks, notifications } = useContext(AppContext);
+  const { user, leaveRequests, projects, notifications } = useContext(AppContext);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);

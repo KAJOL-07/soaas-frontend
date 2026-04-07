@@ -20,7 +20,7 @@ export default function LeaveRequests() {
       <div style={{ display: 'flex', gap: '8px', marginBottom: '20px', flexWrap: 'wrap' }}>
         {['All', 'Pending', 'Approved', 'Rejected'].map(f => (
           <button key={f} onClick={() => setFilter(f)} style={{
-            padding: '7px 18px', borderRadius: '999px', border: 'none', cursor: 'pointer',
+            padding: '7px 18px', borderRadius: '999px', cursor: 'pointer',
             fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 600,
             background: filter === f ? 'linear-gradient(135deg,#6c63ff,#48b9ff)' : 'var(--bg-card)',
             color: filter === f ? '#fff' : 'var(--text-secondary)',
